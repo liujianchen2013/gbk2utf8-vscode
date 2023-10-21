@@ -1,111 +1,126 @@
 {
-  "name": "GBK2UTF8",
-  "displayName": "GBK to UTF8 for vscode",
-  "description": "Convert file encoding from gbk to utf8 for vscode",
-  "publisher": "buuug7",
-  "icon": "icon.png",
-  "author": "buuug7",
-  "license": "MIT",
-  "version": "0.6.2",
-  "engines": {
-    "vscode": "^1.58.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "keywords": [
-    "gbk",
-    "utf8",
-    "gbk utf8",
-    "gbk to utf8"
-  ],
-  "activationEvents": [
-    "onStartupFinished"
-  ],
-  "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "test-compile": "tsc -p ./",
-    "test-watch": "tsc -watch -p ./",
-    "pretest": "npm run test-compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
-  },
-  "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "GBK2UTF8.convert",
-        "category": "GBK2UTF8",
-        "title": "Convert encoding to UTF8"
-      }
-    ],
-    "menus": {
-      "explorer/context": [
-        {
-          "group": "GBK2UTF8",
-          "command": "GBK2UTF8.convert"
-        }
-      ]
+    "name": "GBK2UTF8",
+    "displayName": "GBK to UTF8 for vscode",
+    "description": "Convert file encoding from gbk to utf8 for vscode",
+    "publisher": "buuug7",
+    "icon": "icon.png",
+    "author": "buuug7",
+    "license": "MIT",
+    "version": "0.6.2",
+    "engines": {
+        "vscode": "^1.58.0"
     },
-    "configuration": [
-      {
-        "title": "GBK2UTF8",
-        "type": "object",
-        "properties": {
-          "GBK2UTF8.autoDetect": {
-            "type": "boolean",
-            "default": true,
-            "description": "Auto detect file encoding with GBK related."
-          },
-          "GBK2UTF8.ignoreExtensions": {
-            "type": "string",
-            "default": "git,ts,vue",
-            "description": "Ignore the specified file extensions, separated by comma."
-          },
-          "GBK2UTF8.ignoreDir": {
-            "type": "string",
-            "default": "node_modules,.vscode,.idea,.vscode-test,.github",
-            "description": "Ignore the specified directory, separated by comma."
-          },
-          "GBK2UTF8.showBatchReport": {
-            "type": "boolean",
-            "default": true,
-            "description": "When batch convert encoding, show convert report result."
-          }
-        }
-      }
-    ]
-  },
-  "dependencies": {
-    "jschardet": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/glob": "^7.1.4",
-    "@types/mocha": "^8.2.3",
-    "@types/node": "^16.3.2",
-    "@types/vscode": "^1.58.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "@typescript-eslint/parser": "^4.28.3",
-    "eslint": "^7.30.0",
-    "glob": "^7.1.7",
-    "iconv-lite": "^0.6.2",
-    "mocha": "^8.2.1",
-    "prettier": "^2.3.2",
-    "ts-loader": "^9.2.3",
-    "typescript": "^4.3.5",
-    "vscode-test": "^1.5.2",
-    "webpack": "^5.44.0",
-    "webpack-cli": "^4.7.2"
-  },
-  "homepage": "https://github.com/buuug7/gbk2utf8-vscode/blob/main/README.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/buuug7/gbk2utf8-vscode.git"
-  },
-  "bugs": {
-    "url": "https://github.com/buuug7/gbk2utf8-vscode/issues"
-  }
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "gbk",
+        "utf8",
+        "gbk utf8",
+        "gbk to utf8"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "scripts": {
+        "vscode:prepublish": "npm run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "test-compile": "tsc -p ./",
+        "test-watch": "tsc -watch -p ./",
+        "pretest": "npm run test-compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "GBK2UTF8.convert",
+                "category": "GBK2UTF8",
+                "title": "Convert encoding to UTF8"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "group": "GBK2UTF8",
+                    "command": "GBK2UTF8.convert"
+                }
+            ]
+        },
+        "configuration": [
+            {
+                "title": "GBK2UTF8",
+                "type": "object",
+                "properties": {
+                    "GBK2UTF8.autoDetect": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Auto detect file encoding with GBK related."
+                    },
+                    "GBK2UTF8.includeExtensions": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Process only specified file extensions, separated by commas."
+                    },
+                    "GBK2UTF8.neededConvertCharset": {
+                        "type": "string",
+                        "default": "Big5,GB2312,GB18030,EUC-TW,HZ-GB-2312,ISO-2022-CN",
+                        "description": "Needed convert charsets, separated by commas."
+                    },
+                    "GBK2UTF8.neededReplaceCharset": {
+                        "type": "string",
+                        "default": "",
+                        "description": "needed replace charset. eg: windows-1252:GB2312,GB2312:GB2312"
+                    },
+                    "GBK2UTF8.ignoreExtensions": {
+                        "type": "string",
+                        "default": "git,csproject,exe,so,bin,a,db,dll,lib,log,zip,gz,xlsx,docx,xls,doc,jpg,png,jpeg,svg",
+                        "description": "Ignore the specified file extensions, separated by comma."
+                    },
+                    "GBK2UTF8.ignoreDir": {
+                        "type": "string",
+                        "default": "node_modules,.vscode,.idea,.vscode-test,.github",
+                        "description": "Ignore the specified directory, separated by comma."
+                    },
+                    "GBK2UTF8.showBatchReport": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "When batch convert encoding, show convert report result."
+                    }
+                }
+            }
+        ]
+    },
+    "dependencies": {
+        "jschardet": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.4",
+        "@types/mocha": "^8.2.3",
+        "@types/node": "^16.3.2",
+        "@types/vscode": "^1.58.0",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "eslint": "^7.30.0",
+        "glob": "^7.1.7",
+        "iconv-lite": "^0.6.2",
+        "mocha": "^8.2.1",
+        "prettier": "^2.3.2",
+        "ts-loader": "^9.2.3",
+        "typescript": "^4.3.5",
+        "vscode-test": "^1.5.2",
+        "webpack": "^5.44.0",
+        "webpack-cli": "^4.7.2"
+    },
+    "homepage": "https://github.com/buuug7/gbk2utf8-vscode/blob/main/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/buuug7/gbk2utf8-vscode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/buuug7/gbk2utf8-vscode/issues"
+    }
 }

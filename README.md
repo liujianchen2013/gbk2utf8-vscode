@@ -1,5 +1,4 @@
 # GBK to UTF8 for vscode
-
 <p>
     <a href="https://marketplace.visualstudio.com/items?itemName=buuug7.gbk2utf8">
         <img src="https://vsmarketplacebadges.dev/version-short/buuug7.gbk2utf8.svg" alt="version">
@@ -18,6 +17,12 @@
 用来把 GBK 相关编码文件转换为 UTF8 的 vscode 插件, 并且具有批量转换文件编码的功能。
 
 [English readme](./README_EN.md)
+
+## 本版本修改内容
+1. 修复了原来只读前512字节导致有些大文件编码推断错误的问题(现在文件的全部内容,处理大文件会比较卡)
+2. 增加了可配置项`includeExtensions`用来处理`只导出指定的扩展名的文件`
+3. 增加了可配置项`neededConvertCharset`用来处理`只导出指定编码的文件`
+4. 增加了可配置项`neededReplaceCharset`用来处理`用于推导编码错误需要手动指定编码替换规则`
 
 ## 安装
 

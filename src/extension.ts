@@ -76,14 +76,7 @@ async function convert(clickedFile: any, selectedFiles: any, progress?: any) {
  * @param fsPath
  */
 function detectEncoding(fsPath: string) {
-  const sampleSize = 512;
-  const sample = Buffer.alloc(sampleSize);
-  const fd = fs.openSync(fsPath, "r");
-
-  fs.readSync(fd, sample, 0, sampleSize, null);
-  fs.closeSync(fd);
-  const detectedEncoding = jschardet.detect(sample);
-  return detectedEncoding;
+  return jschardet.detect(fs.readFileSync(fsPath));
 }
 
 /**
@@ -93,6 +86,11 @@ function detectEncoding(fsPath: string) {
  * @returns Promise<string>
  */
 function reEncodingContent(filePath: string, encoding: string): Promise<string> {
+  let replaceCharset = defaultConfig.neededReplaceCharset.get(encoding)
+  if (replaceCharset != undefined && replaceCharset != "") {
+    encoding = replaceCharset
+  }
+
   return new Promise((resolve, reject) => {
     const reader = fs.createReadStream(filePath).pipe(iconv.decodeStream(encoding));
     const chunks: any[] = [];
@@ -119,26 +117,15 @@ function reEncodingContent(filePath: string, encoding: string): Promise<string> 
 async function replaceContent(uri: Uri, force: boolean = false, progress?: any) {
   defaultConfig = getUserConfig();
   const fsPath = uri.fsPath;
-  let { encoding, confidence } = detectEncoding(fsPath);
-  confidence = Number(confidence.toFixed(2));
 
   const notChangedReturn = {
     uri,
-    encoding,
-    confidence,
+    encoding: "ignore",
+    confidence: 1,
     change: false,
   };
 
-  if (defaultConfig.neededConvertCharset.indexOf(encoding) === -1) {
-    if (force && defaultConfig.isBatch) {
-      const message = `It seems that the file encoding(${encoding}) is not GBK related.`;
-      window.showWarningMessage(message);
-    }
-    return notChangedReturn;
-  }
-
   let dirIsIgnored = false;
-
   for (let dir of defaultConfig.ignoreDir) {
     if (fsPath.indexOf(dir) !== -1) {
       dirIsIgnored = true;
@@ -153,7 +140,24 @@ async function replaceContent(uri: Uri, force: boolean = false, progress?: any) 
   const fileExt = fsPath.split(".").pop() || "";
   const fileName = uri.path.split("/").pop();
 
+  if (defaultConfig.includeExtensions.length > 0 && !defaultConfig.includeExtensions.includes(fileExt)) {
+    return notChangedReturn;
+  }
+
   if (defaultConfig.ignoreExtensions.includes(fileExt)) {
+    return notChangedReturn;
+  }
+
+  let { encoding, confidence } = detectEncoding(fsPath);
+  confidence = Number(confidence.toFixed(2));
+  notChangedReturn.encoding = encoding
+  notChangedReturn.confidence = confidence
+
+  if (defaultConfig.neededConvertCharset.indexOf(encoding) === -1) {
+    if (force && defaultConfig.isBatch) {
+      const message = `It seems that the file encoding(${encoding}) is not GBK related.`;
+      window.showWarningMessage(message);
+    }
     return notChangedReturn;
   }
 
