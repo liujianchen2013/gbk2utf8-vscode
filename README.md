@@ -24,6 +24,12 @@
 3. 增加了可配置项`neededConvertCharset`用来处理`只导出指定编码的文件`
 4. 增加了可配置项`neededReplaceCharset`用来处理`用于推导编码错误需要手动指定编码替换规则`
 
+## 打包插件
+```shell
+npm install -g @vscode/vsce
+vsce package
+```
+
 ## 安装
 
 键入`ctrl + p`, 输入 `ext install buuug7.GBK2UTF8` 安装, 或者在扩展市场中搜索 **gbk, gbk utf8** 等关键字来安装.
