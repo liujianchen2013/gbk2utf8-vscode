@@ -2,9 +2,9 @@
     "name": "GBK2UTF8",
     "displayName": "GBK to UTF8 for vscode",
     "description": "Convert file encoding from gbk to utf8 for vscode",
-    "publisher": "buuug7",
+    "publisher": "next66",
     "icon": "icon.png",
-    "author": "buuug7",
+    "author": "next66",
     "license": "MIT",
     "version": "0.6.2",
     "engines": {
@@ -115,12 +115,12 @@
         "webpack": "^5.44.0",
         "webpack-cli": "^4.7.2"
     },
-    "homepage": "https://github.com/buuug7/gbk2utf8-vscode/blob/main/README.md",
+    "homepage": "https://github.com/next66/gbk2utf8-vscode/blob/main/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/buuug7/gbk2utf8-vscode.git"
+        "url": "https://github.com/next66/gbk2utf8-vscode.git"
     },
     "bugs": {
-        "url": "https://github.com/buuug7/gbk2utf8-vscode/issues"
+        "url": "https://github.com/next66/gbk2utf8-vscode/issues"
     }
 }

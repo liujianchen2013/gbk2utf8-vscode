@@ -1,16 +1,16 @@
 # GBK to UTF8 for vscode
 <p>
-    <a href="https://marketplace.visualstudio.com/items?itemName=buuug7.gbk2utf8">
-        <img src="https://vsmarketplacebadges.dev/version-short/buuug7.gbk2utf8.svg" alt="version">
+    <a href="https://marketplace.visualstudio.com/items?itemName=next66.gbk2utf8">
+        <img src="https://vsmarketplacebadges.dev/version-short/next66.gbk2utf8.svg" alt="version">
     </a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=buuug7.gbk2utf8">
-        <img src="https://vsmarketplacebadges.dev/installs-short/buuug7.gbk2utf8.svg" alt="installs">
+    <a href="https://marketplace.visualstudio.com/items?itemName=next66.gbk2utf8">
+        <img src="https://vsmarketplacebadges.dev/installs-short/next66.gbk2utf8.svg" alt="installs">
     </a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=buuug7.gbk2utf8">
-        <img src="https://vsmarketplacebadges.dev/downloads-short/buuug7.gbk2utf8.svg" alt="downloads">
+    <a href="https://marketplace.visualstudio.com/items?itemName=next66.gbk2utf8">
+        <img src="https://vsmarketplacebadges.dev/downloads-short/next66.gbk2utf8.svg" alt="downloads">
     </a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=buuug7.gbk2utf8">
-        <img src="https://vsmarketplacebadges.dev/rating-short/buuug7.gbk2utf8.svg" alt="rating">
+    <a href="https://marketplace.visualstudio.com/items?itemName=next66.gbk2utf8">
+        <img src="https://vsmarketplacebadges.dev/rating-short/next66.gbk2utf8.svg" alt="rating">
     </a>
 </p>
 
@@ -32,7 +32,7 @@ vsce package
 
 ## 安装
 
-键入`ctrl + p`, 输入 `ext install buuug7.GBK2UTF8` 安装, 或者在扩展市场中搜索 **gbk, gbk utf8** 等关键字来安装.
+键入`ctrl + p`, 输入 `ext install next66.GBK2UTF8` 安装, 或者在扩展市场中搜索 **gbk, gbk utf8** 等关键字来安装.
 
 ## 用法
 
@@ -97,5 +97,5 @@ please `reload the window` after the settings is being change, make sure the set
 
 ## Contribution
 
-If you're interested in contributing to, fork the [repo](https://github.com/buuug7/gbk2utf8-vscode.git) and submit pull
+If you're interested in contributing to, fork the [repo](https://github.com/next66/gbk2utf8-vscode.git) and submit pull
 requests.
